@@ -33,3 +33,18 @@ exports.cinemaMovies = async (req, res) => {
     res.status(500).send('HAY UN ERROR CON ESTE PEDIDO -->', error);
   }
 };
+
+//Trae una lista de peliculas populares
+
+exports.popularMovies = async (req, res) => {
+  try {
+    const response = await axios.get(`${url}/movie/popular`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send('HAY UN ERROR CON ESTE PEDIDO -->', error);
+  }
+};
