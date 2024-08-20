@@ -1,30 +1,31 @@
-// Configuración del server
-const express = require("express");
-const path = require("path");
-const cookieParser = require("cookie-parser");
+// Cargar las variables de entorno
+require('dotenv').config();
 
-const models = require("./models");
-const cors = require('cors')
+// Configuración del server
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+
+const models = require('./models');
+const cors = require('cors');
 
 const app = express();
-const db = require("./config/db/db");
+const db = require('./config/db/db');
 
 // Express Route File Requires
 
-const routes = require("./routes");
-
+const routes = require('./routes');
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors())
+app.use(cors());
 
 // Express Routing
-app.use("/api", routes);
-
+app.use('/api', routes);
 
 db.sync({ force: false }).then(() => {
-  console.log("db connected");  
+  console.log('db connected');
   app.listen(8080, () => {
     console.log(`Server listening at port 8080`);
   });
-});         
+});
