@@ -78,3 +78,20 @@ exports.upcomingMovies = async (req, res) => {
     res.status(500).send('HAY UN ERROR CON ESTE PEDIDO -->', error);
   }
 };
+
+//Busca peliculas por nombre
+
+exports.searchMovie = async (req, res) => {
+  const data = req.body.data;
+  try {
+    const response = await axios.get(`${url}/search/movie`, {
+      params: {
+        api_key: apiKey,
+        query: data,
+      },
+    });
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send('HAY UN ERROR CON ESTE PEDIDO', error);
+  }
+};
