@@ -48,3 +48,33 @@ exports.popularMovies = async (req, res) => {
     res.status(500).send('HAY UN ERROR CON ESTE PEDIDO -->', error);
   }
 };
+
+//Trae una lista de peliculas mejor valoradas
+
+exports.topMovies = async (req, res) => {
+  try {
+    const response = await axios.get(`${url}/movie/top_rated`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send('HAY UN ERROR CON ESTE PEDIDO -->', error);
+  }
+};
+
+//trae todas las proximas peliculas a estrenar
+
+exports.upcomingMovies = async (req, res) => {
+  try {
+    const response = await axios.get(`${url}/movie/upcoming`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send('HAY UN ERROR CON ESTE PEDIDO -->', error);
+  }
+};
