@@ -25,9 +25,9 @@ router.post('/register', register);
 
 router.post('/login', login);
 
-router.get('/me', validateAuth, validation);
+router.post('/logout', logout);
 
-router.post('/logout', validateAuth, logout);
+router.get('/me', validateAuth, validation);
 
 router.put('/profile/', validateAuth, profile);
 

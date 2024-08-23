@@ -16,10 +16,6 @@ exports.register = (req, res) => {
 // login
 exports.login = (req, res) => {
   const { email, password } = req.body;
-
-  console.log(email);
-  console.log(password);
-
   User.findOne({ where: { email } }).then((user) => {
     if (!user) return res.sendStatus(401);
     user.validatePassword(password).then((isValid) => {
@@ -32,11 +28,8 @@ exports.login = (req, res) => {
         lastname: user.lastname,
         admin: user.admin,
       };
-
       const token = generateToken(payload); //
-
-      res.cookie('token', token);
-
+      res.cookie('token', token, { httpOnly: true });
       res.send(payload); //
     });
   });
