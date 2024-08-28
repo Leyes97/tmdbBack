@@ -19,6 +19,12 @@ const {
   deleteUser,
 } = require('../controllers/usersController');
 
+const {
+  addFavoriteMovie,
+  removeFavoriteMovie,
+  getFavoriteMovies,
+} = require('../controllers/favoriteController');
+
 router.put('/admin/:id', validateAuth, admin);
 
 router.post('/register', register);
@@ -40,5 +46,10 @@ router.get('/user/:id', validateAuth, user);
 router.put('/darNewAdmin/:id', validateAuth, darNewAdmin);
 
 router.delete('/deleteUser/:id', validateAuth, deleteUser);
+
+// Rutas para manejar las películas favoritas
+router.post('/add', addFavoriteMovie);
+router.get('/get/:id', getFavoriteMovies);
+router.delete('/remove/:userId/:movieId', removeFavoriteMovie);
 
 module.exports = router;
