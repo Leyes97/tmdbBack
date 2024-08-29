@@ -19,12 +19,12 @@ const routes = require('./routes');
 app.use(express.json());
 app.use(cookieParser());
 
-
-app.use(cors({
-  origin: 'http://localhost:3000', // Cambia esto al dominio de tu frontend
-  credentials: true // Esto permite el envío de cookies y otros encabezados de credenciales
-}));
-
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Cambia esto al dominio de tu frontend
+    credentials: true, // Esto permite el envío de cookies y otros encabezados de credenciales
+  }),
+);
 
 // Express Routing
 app.use('/api', routes);
