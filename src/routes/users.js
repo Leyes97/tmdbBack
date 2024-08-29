@@ -48,7 +48,7 @@ router.put('/darNewAdmin/:id', validateAuth, darNewAdmin);
 router.delete('/deleteUser/:id', validateAuth, deleteUser);
 
 // Rutas para manejar las películas favoritas
-router.post('/add', addFavoriteMovie);
+router.post('/add/:userId/:movieId', addFavoriteMovie);
 router.get('/get/:id', getFavoriteMovies);
 router.delete('/remove/:userId/:movieId', removeFavoriteMovie);
 
