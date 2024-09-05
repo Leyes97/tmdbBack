@@ -80,7 +80,6 @@ exports.removeFavoriteMovie = async (req, res) => {
     const deleteMovies = favoriteMovies.movieIds.filter(
       (id) => id !== Number(movieId),
     );
-    console.log(deleteMovies);
 
     await favoriteMovies.update({ movieIds: deleteMovies });
 
