@@ -102,7 +102,7 @@ exports.upcomingMovies = async (req, res) => {
 //Busca peliculas por nombre
 
 exports.searchMovie = async (req, res) => {
-  const data = req.body.data;
+  const data = req.body.data; // Obtener datos del body
   try {
     const response = await axios.get(`${url}/search/movie`, {
       params: {
@@ -117,7 +117,6 @@ exports.searchMovie = async (req, res) => {
       .json({ message: 'HAY UN ERROR CON ESTE PEDIDO', error: error.message });
   }
 };
-
 // Busca peliculas por id:
 
 exports.getMovieById = async (req, res) => {
